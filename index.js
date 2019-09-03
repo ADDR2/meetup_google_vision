@@ -14,8 +14,9 @@ async function quickstart() {
 
     const [ { labelAnnotations } ] = await client.labelDetection('./upload.jpg');
     const [ { faceAnnotations } ] = await client.faceDetection('./upload.jpg');
+    const [ { safeSearchAnnotation } ] = await client.safeSearchDetection('./upload.jpg');
 
-    return { labelDetection: labelAnnotations, faceDetection: faceAnnotations };
+    return { labelDetection: labelAnnotations, faceDetection: faceAnnotations, safeSearchDetection: safeSearchAnnotation };
 }
 
 http.createServer(async (request, response) => {
