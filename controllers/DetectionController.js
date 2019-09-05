@@ -1,5 +1,6 @@
 const GoogleClientService = require('../services/GoogleClientService');
 const TransferFileService = require('../services/TransferFileService');
+const ParseService = require('../services/ParseService');
 
 class DetectionController {
     static async postAnalyzeImage(request, response) {
@@ -10,7 +11,12 @@ class DetectionController {
 
             if (!path) throw new Error('Could not transfer file');
 
-            const result = await GoogleClientService.completeAnalysis(path);
+            const googleResult = await GoogleClientService.completeAnalysis(path);
+            const result = {
+                JsonResults: googleResult,
+                Moderation: ParseService.parseModerationResults(googleResult.safeSearchDetection),
+                Faces: ParseService.parseFaceResults(googleResult.faceDetection)
+            };
         
             response.statusCode = 200;
             responseBody.body = result;
