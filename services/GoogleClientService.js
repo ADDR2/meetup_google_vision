@@ -11,9 +11,15 @@ class GoogleClientService {
 
     async completeAnalysis(filePath) {
         try {
-            const [ { labelAnnotations } ] = await this.client.labelDetection(filePath);
-            const [ { faceAnnotations } ] = await this.client.faceDetection(filePath);
-            const [ { safeSearchAnnotation } ] = await this.client.safeSearchDetection(filePath);
+            const [
+                [ { labelAnnotations } ],
+                [ { faceAnnotations } ],
+                [ { safeSearchAnnotation } ]
+            ] = await Promise.all([
+                this.client.labelDetection(filePath),
+                this.client.faceDetection(filePath),
+                this.client.safeSearchDetection(filePath)
+            ]);
 
             return {
                 labelDetection: labelAnnotations,
