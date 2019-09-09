@@ -14,8 +14,9 @@ class Router {
 
     enRouteRequest(request, response) {
         const { url, method } = request;
-        
-        switch(`${method} - ${url}`) {
+        const [ domain, queryParams ] = url.split('?');
+
+        switch(`${method} - ${domain}`) {
             case 'POST - /analyze-image': {
                 DetectionController.postAnalyzeImage(request, response)
                     .then(body => {

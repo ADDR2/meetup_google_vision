@@ -8,7 +8,7 @@ const defaultSafeSearchValues = {
 };
 
 class ParseService {
-    static parseFaceResults(faceDetectionResult) {
+    static parseFaceResults(faceDetectionResult = []) {
         const result = [];
 
         for(const face of faceDetectionResult) {
@@ -21,9 +21,9 @@ class ParseService {
         return result;
     }
 
-    static parseModerationResults({ adult, racy }) {
-        const adultValue = defaultSafeSearchValues[adult];
-        const racyValue = defaultSafeSearchValues[racy];
+    static parseModerationResults({ adult, racy } = {}) {
+        const adultValue = defaultSafeSearchValues[adult] || 0;
+        const racyValue = defaultSafeSearchValues[racy] || 0;
 
         return {
             IsAdultContent: adultValue > 2,
