@@ -13,7 +13,7 @@ class ParseService {
 
         for(const face of faceDetectionResult) {
             result.push({
-                Box: ParseService.generateSquareSvg(face.boundingPoly.vertices),
+                Box: ParseService.generateSquareSvg(face.fdBoundingPoly.vertices),
                 Landmarks: face.landmarks.map(({ type, position }) => ({ type, ...position }))
             });
         }
