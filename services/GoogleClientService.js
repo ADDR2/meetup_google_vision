@@ -15,17 +15,20 @@ class GoogleClientService {
             const [
                 [ { labelAnnotations } ],
                 [ { faceAnnotations } ],
-                [ { safeSearchAnnotation } ]
+                [ { safeSearchAnnotation } ],
+                [ { webDetection } ]
             ] = await Promise.all([
                 this.client.labelDetection(filePath),
                 this.client.faceDetection(filePath),
-                this.client.safeSearchDetection(filePath)
+                this.client.safeSearchDetection(filePath),
+                this.client.webDetection(filePath)
             ]);
 
             return {
                 labelDetection: labelAnnotations,
                 faceDetection: faceAnnotations,
-                safeSearchDetection: safeSearchAnnotation
+                safeSearchDetection: safeSearchAnnotation,
+                webDetection
             };
         } catch(error) {
             console.error(
