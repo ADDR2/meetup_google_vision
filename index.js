@@ -11,5 +11,5 @@ http.createServer(
 ).listen(
     PORT,
     '127.0.0.1',
-    console.log.bind(this, INFO_TEXT + PORT_TEXT)
+    console.log.bind({}, INFO_TEXT + PORT_TEXT)
 );
