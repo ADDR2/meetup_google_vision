@@ -1,6 +1,6 @@
 # Google Vision API with Node
 
-This project requires Node (version >= 10.10.0) to be executed.
+This project requires Node (version >= `10.10.0`) to be executed.
 
 Once you have installed it, then you just need to run this command:
 
@@ -22,7 +22,7 @@ Then you'll be able to run it executing the following command:
 $> npm start
 ```
 
-# Config
+## Config
 
 There are several environment variables you can change in order to change the server behavior.
 The list of variables is the following:
@@ -31,9 +31,12 @@ The list of variables is the following:
 * FILE_PATH - This variable indicates where to save images sent by the frontend. E.g ./upload
 * FILE_EXTENSION - This variable indicates the extension of the path given above. E.g .jpg
 
-# To get the JSON from Google Cloud
+## To get the JSON from Google Cloud
 
 Follow the instructions given on [Google Vision Docs](https://cloud.google.com/vision/docs/libraries?hl=es-419#client-libraries-install-nodejs)
 
-# Related Repositories
+## Related Repositories
 
+* [AWS API with Java](https://github.com/eamachine/aws-rekognition)
+* [Azure API with C#](https://github.com/hmunozc/azure-vision)
+* [FrontEnd for the 3 projects](https://github.com/ADDR2/google-vision-front)
