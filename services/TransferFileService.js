@@ -1,6 +1,7 @@
 const { createWriteStream } = require('fs');
 const { promisify } = require('util');
 const { pipeline: callbackPipeline } = require('stream');
+const ColoredString = require('../helpers/ColoredString');
 
 const pipeline = promisify(callbackPipeline);
 let counter = 1n;
@@ -21,11 +22,14 @@ class TransferFileService {
                 readStream,
                 createWriteStream(completePath),
             );
-            console.log('Pipeline succeeded');
+            console.log(new ColoredString('Pipeline succeeded').green);
 
             return completePath;
         } catch (error) {
-            console.error('Pipeline failed', error);
+            console.error(
+                new ColoredString(`Pipeline failed: ${error.message}`).red,
+                error
+            );
         }
     }
 }

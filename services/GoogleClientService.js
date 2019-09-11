@@ -1,4 +1,5 @@
 const vision = require('@google-cloud/vision');
+const ColoredString = require('../helpers/ColoredString');
 
 class GoogleClientService {
     constructor() {
@@ -27,7 +28,10 @@ class GoogleClientService {
                 safeSearchDetection: safeSearchAnnotation
             };
         } catch(error) {
-            console.error('Could not execute analysis', error);
+            console.error(
+                new ColoredString(`Could not execute analysis: ${error.message}`).red,
+                error
+            );
             return {};
         }
     }
